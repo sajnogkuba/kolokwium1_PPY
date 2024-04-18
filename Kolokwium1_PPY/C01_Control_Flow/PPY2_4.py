@@ -10,9 +10,20 @@ step przyjmuje domyślnie wartość 1
 1 
 """
 
+
+def functionA(number):
+    number = int(number)
+    for i in range(number):
+        for j in range(number - i, 0, -1):
+            print(j, end=' ')
+        print()
+
+
+functionA(10)
+
 """
 B. 
-Rozszerz powyzszy kod o warunki i dostosuj go do ponieszego wzoru:
+Rozszerz powyższy kod o warunki i dostosuj go do poniższego wzoru:
 11 # 9 -8 7 -6 # -4 3 -2 1 
 # 9 -8 7 -6 # -4 3 -2 1 
 9 -8 7 -6 # -4 3 -2 1 
@@ -25,3 +36,22 @@ Rozszerz powyzszy kod o warunki i dostosuj go do ponieszego wzoru:
 -2 1 
 1 
 """
+print()
+print()
+print()
+
+
+def functionB(number):
+    number = int(number)
+    for i in range(number):
+        for j in range(number - i, 0, -1):
+            if j % 5 == 0:
+                print("#", end=' ')
+            elif j % 2 == 0:
+                print(-j, end=' ')
+            else:
+                print(j, end=' ')
+        print()
+
+
+functionB(11)
