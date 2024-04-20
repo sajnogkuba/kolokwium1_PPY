@@ -12,6 +12,11 @@ Użyj słownika, gdzie kluczem będzie nazwa kontaktu, a wartością będzie lis
 nazwisko, numer telefonu).
 """
 
+"""
+tutaj lepiej by było zastosować jakąś klasę PhoneBook i nie przekazywać tej mapy phone_book wszędzie, tylko 
+wywoływać metody klasy, ale już zrobiłem jak na ćwiczeniach :P
+"""
+
 
 def userInputChoice(options_list):
     correct_input = False
@@ -28,9 +33,43 @@ def userInputChoice(options_list):
     return user_input
 
 
+is_running = True
 phone_book = dict()
-print('What would you like to do?:')
-print('\t 1. Add a phone number')
-print('\t 2. See all phone numbers')
-print('\t 3. Search a phone number')
-print('\t 4. Delete a phone number')
+
+
+def showAllContacts(phone_book):
+    for key, value in phone_book.items():
+        print(f'{key}: {value}')
+
+
+def addContact(phone_book):
+    pass
+
+
+def searchContact(phone_book):
+    pass
+
+
+def deleteContact(phone_book):
+    pass
+
+
+while is_running:
+    print('What would you like to do?:')
+    print('\t 1. Add a contact')
+    print('\t 2. Show all contacts')
+    print('\t 3. Search a contact')
+    print('\t 4. Delete a contact')
+    print('\t 5. Close program')
+
+    user_choice = userInputChoice([1, 2, 3, 4, 5, 6])
+    if user_choice == 1:
+        addContact(phone_book)
+    elif user_choice == 2:
+        showAllContacts(phone_book)
+    elif user_choice == 3:
+        searchContact(phone_book)
+    elif user_choice == 4:
+        deleteContact(phone_book)
+    elif user_choice == 5:
+        is_running = False
