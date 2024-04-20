@@ -56,7 +56,6 @@ def formatPhoneNumber():
     return phone_number
 
 
-
 def addContact(phone_book):
     contact_name = input('Enter contact name: ')
     name = input('Enter name: ')
