@@ -11,6 +11,7 @@ Usuwanie kontaktu z książki adresowej.
 Użyj słownika, gdzie kluczem będzie nazwa kontaktu, a wartością będzie lista informacji o kontakcie (np. imię,
 nazwisko, numer telefonu).
 """
+import string
 
 """
 tutaj lepiej by było zastosować jakąś klasę PhoneBook i nie przekazywać tej mapy phone_book wszędzie, tylko 
@@ -38,11 +39,43 @@ phone_book = dict()
 
 
 def showAllContacts(phone_book):
+    if len(phone_book) == 0:
+        print('No contacts to show')
+    print("Your contacts:")
     for key, value in phone_book.items():
-        print(f'{key}: {value}')
+        print(f'\t - {key}: {value}')
+
+
+def formatPhoneNumber():
+    phone_number = input('Enter phone number: ')
+    for i in range(len(phone_number)):
+        if phone_number[i] not in string.digits:
+            print('Invalid phone number, try again')
+            return formatPhoneNumber()
+    return phone_number
+
 
 
 def addContact(phone_book):
+    contact_name = input('Enter contact name: ')
+    name = input('Enter name: ')
+    name = name.capitalize()
+    surname = input('Enter surname: ')
+    surname = surname.capitalize()
+    phone_number = formatPhoneNumber()
+    if contact_name not in phone_book:
+        phone_book[contact_name] = [name, surname, phone_number]
+        print('Contact added')
+    else:
+        print(f'Contact with name {contact_name} already exists, do you want to overwrite it?')
+        print('\t 1. Yes')
+        print('\t 2. No')
+        user_choice = userInputChoice([1, 2])
+        if user_choice == 1:
+            phone_book[contact_name] = [name, surname, phone_number]
+            print('Contact overwritten')
+        elif user_choice == 2:
+            print('Close operation')
     pass
 
 
