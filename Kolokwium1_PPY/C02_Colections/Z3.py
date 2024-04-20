@@ -41,9 +41,10 @@ phone_book = dict()
 def showAllContacts(phone_book):
     if len(phone_book) == 0:
         print('No contacts to show')
-    print("Your contacts:")
-    for key, value in phone_book.items():
-        print(f'\t - {key}: {value}')
+    else:
+        print("Your contacts:")
+        for key, value in phone_book.items():
+            print(f'\t - {key}: {value}')
 
 
 def formatPhoneNumber():
@@ -80,14 +81,24 @@ def addContact(phone_book):
 
 
 def searchContact(phone_book):
-    pass
+    name_search = input('Enter search contact name: ')
+    if name_search in phone_book:
+        print('Found contact with name \"', name_search, '\"->', phone_book[name_search])
+    else:
+        print('Contact with name \"', name_search, '\" does not exist')
 
 
 def deleteContact(phone_book):
+    name_search = input('Enter contact name to delete: ')
+    if name_search in phone_book:
+        print('Contact with name', name_search, 'deleted')
+    else:
+        print('Contact with name', name_search, 'does not exist')
     pass
 
 
 while is_running:
+    print('')
     print('What would you like to do?:')
     print('\t 1. Add a contact')
     print('\t 2. Show all contacts')
