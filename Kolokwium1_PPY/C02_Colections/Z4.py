@@ -22,6 +22,32 @@ products = [
 """
 
 
+def productsWithCategoryByLetter(letter, products):
+    result = list()
+    for product in products:
+        if product[2][0] == letter:
+            result.append(product)
+    return result
+
+
+def productsMoreExpensiveThan(price, products):
+    result = list()
+    for product in products:
+        if product[1] > price:
+            result.append(product)
+    return result
+
+
+def mostExpensiveProduct(products):
+    max_price = 0
+    most_expensive = products[0]
+    for product in products:
+        if product[1] > max_price:
+            max_price = product[1]
+            most_expensive = product
+    return most_expensive
+
+
 def averagePrice(products):
     prices_sum = 0
     for product in products:
@@ -50,3 +76,11 @@ for product in products:
     if product[2] == category:
         products_in_category.append(product)
 print(f"Average price in category '{category}': ", averagePrice(products_in_category))
+print(f"The most expensive product is ", mostExpensiveProduct(products))
+print(f"The most expensive product in category '{category}' is ", mostExpensiveProduct(products_in_category))
+print("Product more expensive than 100:")
+for product in productsMoreExpensiveThan(100, products):
+    print("\t -", product)
+print("Product with category start by 'E'")
+for product in productsWithCategoryByLetter("E", products):
+    print("\t -", product)
